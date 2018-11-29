@@ -40,6 +40,7 @@ const install = (Vue, options) => {
     sectionSelector: null,
     data: null,
     offset: 0,
+    activeOffset: 0,
     time: 500,
     steps: 30,
     easing: null,
@@ -153,7 +154,7 @@ const install = (Vue, options) => {
           index = idScrollSections.length
         } else {
           for (index = 0; index < idScrollSections.length; index++) {
-            if (getOffsetTop(idScrollSections[index], scrollEl) - options.offset > scrollEl.scrollTop) {
+            if (getOffsetTop(idScrollSections[index], scrollEl) - (options.activeOffset || options.offset) > scrollEl.scrollTop) {
               break
             }
           }
